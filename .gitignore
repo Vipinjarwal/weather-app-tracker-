@@ -1,0 +1,4 @@
+venv
+
+*.pyc
+historical_data.json

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-12 mx-auto">
+          <h1 class="text-white text-center">Weather. Discover. Enjoy</h1>
+
+          <h6 class="text-center">platform for weather around the world</h6>
+
+          <form method="GET" action="{% url 'historical' %}" class="custom-form mt-4 pt-2 mb-lg-0 mb-5">
+            <div class="input-group input-group-lg">
+              <span class="input-group-text bi-search" id="basic-addon1"></span>
+
+              <input name="city" type="search" class="form-control" placeholder="Enter city name" value="{{ HistoricalData.city_name }}" />
+              <div class="input-group-append">
+                <button type="submit" class="form-control">Search</button>
+              </div>
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+              <section class="featured-section">
+                <div class="container">
+                    <div class="row justify-content-center">
+
+                        <div class="col-lg-4 col-6 mb-4 mb-lg-0">
+                            <div class="custom-block bg-white shadow-lg">
+                                <a href="topics-detail.html">
+                                    <div class="d-flex">
+                                        <div>
+                                            
+                                            {% for d in data %}
+                                                <h5 class="mb-2">{{ d.city_name }} 
+                                                </h5>
+                                                <li> country: {{ d.country }} </li>
+                                                <li>Weather: {{ d.weather_main }}</li>
+                                                <li>Description: {{ d.weather_description }}</li>
+                                                <li>Temperature: {{ d.temp_min }}°C</li>
+                                                <li>Date and Time: {{ d.time }}</li>
+                                                <li>Pressure: {{ d.pressure }} hPa</li>
+                                                <li>Humidity: {{ d.humidity }}</li>
+                                                <li> Wind Speed: {{ d.wind_speed }} </li>
+                                                {% endfor %}
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+{% endblock %}
